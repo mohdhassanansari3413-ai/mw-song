@@ -1,3 +1,4 @@
+
 name: Build MW Music APK
 
 on:
@@ -16,6 +17,13 @@ jobs:
     steps:
       - name: Get source code
         uses: actions/checkout@v4
+
+      - name: Extract Android project ZIP
+        run: |
+          unzip -o DOC-20261024-WA0000.zip -d .
+          test -d app
+          test -f settings.gradle.kts
+          echo "Android project files found"
 
       - name: Set up Java
         uses: actions/setup-java@v4
